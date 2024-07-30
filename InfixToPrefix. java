@@ -1,0 +1,39 @@
+import java.util.Stack;
+
+public class InfixToPrefix {
+
+    // Function to check if a character is an operator
+    private static boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
+    }
+
+    // Function to get precedence of operators
+    private static int precedence(char op) {
+        switch (op) {
+            case '+':
+            case '-':
+                return 1;
+            case '*':
+            case '/':
+                return 2;
+            case '^':
+                return 3;
+        }
+        return -1;
+    }
+
+    // Function to reverse a string
+    private static String reverse(String str) {
+        return new StringBuilder(str).reverse().toString();
+    }
+
+    // Function to convert infix expression to postfix expression
+    private static String infixToPostfix(String expression) {
+        StringBuilder postfix = new StringBuilder();
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+
+            // If the character is an operand, add it to output
+     
